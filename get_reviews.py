@@ -15,6 +15,9 @@ def main():
         #string = 'INSERT OR REPLACE INTO reviews VALUES (\"%s\", \"%s\", %d, \"%s\");' % (str(review.timestamp), str(review.title), review.stars, str(review.body))
        # c.execute(string)
         c.execute("INSERT OR REPLACE INTO reviews VALUES (?, ?, ?, ?);", (str(review.timestamp), str(review.title), review.stars, str(review.body)))
+        # this one is for caching movies for data science purposes
+        c.execute("INSERT OR REPLACE INTO cache VALUES (?, ?, ?, ?);", (str(review.timestamp), str(review.title), review.stars, str(review.body)))
+
     conn.commit()
     conn.close()
 

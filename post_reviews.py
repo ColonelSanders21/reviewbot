@@ -92,7 +92,7 @@ def generateImage(review):
     for line, (w, h) in zip(text, line_dimensions):
         d.text(((MAX_W - w) // 2, current_h), line, font=fnt, fill="black")
         current_h += h
-    filename = "reviews/temp.jpg"
+    filename = "temp.jpg"
     img.save(filename)
     return(filename)
 
