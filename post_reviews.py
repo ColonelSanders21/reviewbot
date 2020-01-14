@@ -67,22 +67,25 @@ def main():
             time_elapsed += 5
 
 def generateImage(review):
-    # Let's split the text with newlines every... 60 chars?
-    text = textwrap.wrap(review.body, width=60)
+    review_length = len(review.body)
     # Choose a random color -- from 1 to 4
     color = random.randint(1,4)
     img = Image.open(str(color) +'.jpg')
     MAX_W, MAX_H = img.size
-    # We need to choose our font size wisely here.
-    review_length = len(review.body)
-    if review_length <= 60:
-        font_size = 25
-    elif review_length > 60 and review_length <= 630:
+    # Following is based on handmade testing. Let's see how this goes.
+    if review_length <= 600:
+        font_size = 20
+        cpl = 39
+    elif review_length > 600 and review_length <= 864:
         font_size = 18
-    elif review_length > 630 and review_length <= 1020:
+        cpl = 48
+    elif review_length > 864 and review_length <= 1160:
         font_size = 16
+        cpl = 58
     else:
         font_size = 14
+        cpl = 63
+    text = textwrap.wrap(review.body, width=cpl)
     fnt = ImageFont.truetype("/usr/share/fonts/dejavu/DejaVuSans.ttf",font_size)
     d = ImageDraw.Draw(img)
     # We need to sort out what the height of our text is
