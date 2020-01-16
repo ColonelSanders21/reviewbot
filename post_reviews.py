@@ -84,8 +84,8 @@ def generateImage(review):
         cpl = 58
     else:
         font_size = 14
-        cpl = 63
-    text = textwrap.wrap(review.body, width=cpl)
+        cpl = 60
+    text = textwrap.wrap(review.body)
     fnt = ImageFont.truetype("/usr/share/fonts/dejavu/DejaVuSans.ttf",font_size)
     d = ImageDraw.Draw(img)
     # We need to sort out what the height of our text is
