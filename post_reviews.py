@@ -59,13 +59,13 @@ def main():
             os.remove(image_filename)
         # Hush. It's time to sleep.
         print("Going into sleep mode.\n")
-        max_time = 60
+        max_time = 30
         time_elapsed = 0
         while time_elapsed != max_time:
-            if time_elapsed == 30:
+            #if time_elapsed == 30:
                 # We scrape every 30 mins, and we post every 60.
-                get_reviews.main()
-                print('Got reviews.\n')
+                #get_reviews.main()
+                #print('Got reviews.\n')
             print('Next post: ' + str(max_time-time_elapsed) + ' minutes.\n')
             time.sleep(300)
             time_elapsed += 5
